@@ -17,26 +17,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         
         let profile = ProfileViewController()
-        profile.title = "Ваш профиль"
-        let tabBarProfile = UITabBarItem()
-        tabBarProfile.image = .init(systemName: "person.fill")
-        tabBarProfile.title = "Профиль"
-        profile.tabBarItem = tabBarProfile
+        profile.loadViewIfNeeded()
 
         
         let feed = FeedViewController()
-       
         
         
-        let feedNavagation = UINavigationController(rootViewController: feed)
-        let profileNavigation = UINavigationController(rootViewController: profile)
+        let navigationAppearance = UINavigationBarAppearance()
+        navigationAppearance.backgroundColor = .systemGray6
         
-        let tabbarController = UITabBarController()
-        tabbarController.viewControllers = [feedNavagation, profileNavigation]
-        tabbarController.selectedIndex = 0
+        let profileNavigationController = UINavigationController(rootViewController: profile)
+        profileNavigationController.navigationBar.scrollEdgeAppearance = navigationAppearance
         
         
-        window?.rootViewController = tabbarController
+        let feedNavigationController =
+            UINavigationController(rootViewController: feed)
+        feedNavigationController.navigationBar.scrollEdgeAppearance = navigationAppearance
+    
+        
+        let tabBarController = UITabBarController()
+        tabBarController.tabBar.backgroundColor = .systemGray6
+        tabBarController.tabBar.unselectedItemTintColor = .systemGray
+        tabBarController.tabBar.tintColor = .systemBlue
+    
+        
+
+        tabBarController.setViewControllers([feedNavigationController, profileNavigationController ], animated: true)
+        tabBarController.selectedIndex = 0
+        
+        
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
         
         return true
