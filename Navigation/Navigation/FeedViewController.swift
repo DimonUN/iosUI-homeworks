@@ -9,10 +9,6 @@ import UIKit
 
 class FeedViewController: UIViewController {
 
-    struct Post {
-        let title: String
-    }
-    
     var post = Post(title: "Первый пост")
     
     var tabBarFeed: UITabBarItem = {
