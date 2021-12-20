@@ -25,11 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         let feed = FeedViewController()
-        let tabBarFeed = UITabBarItem()
-        feed.title = "Ваша лента"
-        tabBarFeed.image = .init(systemName: "house.fill")
-        tabBarFeed.title = "Лента"
-        feed.tabBarItem = tabBarFeed
+       
         
         
         let feedNavagation = UINavigationController(rootViewController: feed)
