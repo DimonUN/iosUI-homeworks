@@ -1,19 +1,17 @@
 //
 //  ProfileViewController.swift
-//  Netology_IB_Instruments
+//  Navigation
 //
-//  Created by Дмитрий Никоноров on 28.11.2021.
+//  Created by Дмитрий Никоноров on 01.12.2021.
 //
 
-import Foundation
 import UIKit
 
 class ProfileViewController: UIViewController {
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemMint
+        
     }
-    
 }

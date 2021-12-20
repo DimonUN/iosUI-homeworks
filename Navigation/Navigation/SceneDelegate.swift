@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  Netology_IB_Instruments
+//  Navigation
 //
-//  Created by Дмитрий Никоноров on 27.11.2021.
+//  Created by Дмитрий Никоноров on 01.12.2021.
 //
 
 import UIKit
