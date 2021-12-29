@@ -9,21 +9,22 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
+    var button: UIButton = {
+        let button = UIButton()
+        button.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        
+        button.backgroundColor = UIColor.systemBlue
+        button.setTitle("Alert", for: .normal)
+        button.addTarget(self, action: #selector(donePressed), for: .touchUpInside)
+        
+        
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        addButton()
-    }
-    
-    
-    fileprivate func addButton() {
-        let button = UIButton()
-        button.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         button.center = view.center
-        button.backgroundColor = UIColor.systemBlue
-        button.setTitle("Alert", for: .normal)
-        button.addTarget(self, action: #selector(donePressed), for: .touchUpInside)
         view.addSubview(button)
     }
     
