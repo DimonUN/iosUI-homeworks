@@ -1,27 +1,19 @@
-//
-//  AppDelegate.swift
-//  Navigation
-//
-//  Created by Дмитрий Никоноров on 01.12.2021.
-//
-
 import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
     
+    var window: UIWindow?
+
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow()
-        
+    
         let profile = ProfileViewController()
         profile.loadViewIfNeeded()
 
-        
         let feed = FeedViewController()
-        
         
         let navigationAppearance = UINavigationBarAppearance()
         navigationAppearance.backgroundColor = .systemGray6
@@ -49,7 +41,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
         
+        
+        
         return true
     }
+
 }
 
