@@ -9,16 +9,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow()
-    
-        let profile = ProfileViewController()
-        profile.loadViewIfNeeded()
+        
+        let logIn = LogInViewController()
 
         let feed = FeedViewController()
         
         let navigationAppearance = UINavigationBarAppearance()
         navigationAppearance.backgroundColor = .systemGray6
         
-        let profileNavigationController = UINavigationController(rootViewController: profile)
+        let profileNavigationController = UINavigationController(rootViewController: logIn)
         profileNavigationController.navigationBar.scrollEdgeAppearance = navigationAppearance
         
         
@@ -31,12 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.tabBar.backgroundColor = .systemGray6
         tabBarController.tabBar.unselectedItemTintColor = .systemGray
         tabBarController.tabBar.tintColor = .systemBlue
-    
         
-
         tabBarController.setViewControllers([feedNavigationController, profileNavigationController ], animated: true)
         tabBarController.selectedIndex = 0
-        
         
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
