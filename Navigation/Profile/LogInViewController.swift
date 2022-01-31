@@ -2,34 +2,26 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
-
     //MARK: Setting properties
-    
-    var tabBarItemProfile: UITabBarItem = {
-        let tabBarItemProfile = UITabBarItem()
-        tabBarItemProfile.image = .init(systemName: "person.fill")
-        tabBarItemProfile.title = "Profile"
-        return tabBarItemProfile
-    }()
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = true
         scrollView.showsHorizontalScrollIndicator = false
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.toAutoLayout()
         return scrollView
     }()
     
     private lazy var contentView: UIView = {
         let contentView = UIView()
-        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.toAutoLayout()
         return contentView
     }()
     
     
     private lazy var logoContentView: UIView = {
         let logoContentView = UIView()
-        logoContentView.translatesAutoresizingMaskIntoConstraints = false
+        logoContentView.toAutoLayout()
         return logoContentView
     }()
     
@@ -39,14 +31,14 @@ class LogInViewController: UIViewController {
         logoImageView.layer.contents = UIImage(named: "logo")?.cgImage
         logoImageView.layer.contentsGravity = .resizeAspectFill
         logoImageView.layer.masksToBounds = true
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        logoImageView.toAutoLayout()
         return logoImageView
     }()
 
         
     private lazy var textFieldsContentView: UIView = {
         let textFieldsContentView = UIView()
-        textFieldsContentView.translatesAutoresizingMaskIntoConstraints = false
+        textFieldsContentView.toAutoLayout()
         textFieldsContentView.layer.borderColor = UIColor.lightGray.cgColor
         textFieldsContentView.layer.borderWidth = 0.5
         textFieldsContentView.layer.cornerRadius = 10.0
@@ -58,7 +50,7 @@ class LogInViewController: UIViewController {
     
     private lazy var loginTextField: UITextField = {
         let loginTextField = UITextField()
-        loginTextField.translatesAutoresizingMaskIntoConstraints = false
+        loginTextField.toAutoLayout()
 
         loginTextField.placeholder = "Email or phone"
         loginTextField.font = UIFont.systemFont(ofSize: 16.0)
@@ -82,7 +74,7 @@ class LogInViewController: UIViewController {
     
     private lazy var passwordTextField: UITextField = {
         let passwordTextField = UITextField()
-        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextField.toAutoLayout()
         passwordTextField.placeholder = "Password"
         passwordTextField.font = UIFont.systemFont(ofSize: 16.0)
         
@@ -109,7 +101,7 @@ class LogInViewController: UIViewController {
     private lazy var loginButton: UIButton = {
         let loginButton = UIButton(type: .custom)
         loginButton.setTitle("Log in", for: .normal)
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        loginButton.toAutoLayout()
         loginButton.setTitleColor(.white, for: .normal)
         
         loginButton.layer.cornerRadius = 10.0
@@ -125,7 +117,7 @@ class LogInViewController: UIViewController {
         var imageView = UIImageView()
         imageView.image = UIImage(named: "blue_pixel-1")
         imageView.clipsToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.toAutoLayout()
         return imageView
     }()
 
@@ -134,23 +126,18 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()
+        setupUI()
     }
     
-    fileprivate func setUpUI() {
+    fileprivate func setupUI() {
         view.backgroundColor = .white
-        title = "Login to you profile"
-        tabBarItem = tabBarItemProfile
         
         navigationController?.navigationBar.isHidden = true
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        contentView.addSubview(logoContentView)
+        contentView.addSubviews(logoContentView, textFieldsContentView, loginButton)
         logoContentView.addSubview(logoImageView)
-        contentView.addSubview(textFieldsContentView)
-        textFieldsContentView.addSubview(loginTextField)
-        textFieldsContentView.addSubview(passwordTextField)
-        contentView.addSubview(loginButton)
+        textFieldsContentView.addSubviews(loginTextField, passwordTextField)
         loginButton.addSubview(imageView)
         
         NSLayoutConstraint.activate([
@@ -229,7 +216,7 @@ class LogInViewController: UIViewController {
     
     
     @objc private func kbdHide(_ notification: NSNotification) {
-        scrollView.contentInset.bottom = .zero
+        scrollView.contentOffset = CGPoint.zero
         scrollView.verticalScrollIndicatorInsets = .zero
     }
     

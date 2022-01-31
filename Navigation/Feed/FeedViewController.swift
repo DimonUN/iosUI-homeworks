@@ -4,14 +4,6 @@ class FeedViewController: UIViewController {
 
     var post = Post(title: "Первый пост")
     
-    var tabBarFeed: UITabBarItem = {
-        let tabBarFeed = UITabBarItem()
-        tabBarFeed.image = .init(systemName: "house.fill")
-        tabBarFeed.title = "Feed"
-        return tabBarFeed
-    }()
-    
-    
     var firstButton: UIButton = {
         let firstButton = UIButton()
         firstButton.backgroundColor = .systemBlue
@@ -30,7 +22,6 @@ class FeedViewController: UIViewController {
     var secondButton: UIButton = {
         let secondButton = UIButton()
         secondButton.backgroundColor = .systemCyan
-//        secondButton.backgroundColor = .cyan
         secondButton.setTitle("Button 2", for: .normal)
         secondButton.setTitleColor(.white, for: .normal)
         secondButton.layer.cornerRadius = 20
@@ -49,23 +40,19 @@ class FeedViewController: UIViewController {
         stackView.distribution = .equalSpacing
         stackView.alignment = .center
         stackView.spacing = 10
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.toAutoLayout()
         return stackView
     }()
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    fileprivate func setupUI() {
         view.backgroundColor = .white
         
-        self.title = "Your feed"
-        self.tabBarItem = tabBarFeed
-    
         stackView.addArrangedSubview(firstButton)
         stackView.addArrangedSubview(secondButton)
         
         view.addSubview(stackView)
-    
+        
         NSLayoutConstraint.activate([
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             stackView.heightAnchor.constraint(equalToConstant: 150),
@@ -78,6 +65,11 @@ class FeedViewController: UIViewController {
             secondButton.heightAnchor.constraint(equalToConstant: 50),
             secondButton.widthAnchor.constraint(equalToConstant: 100)
         ])
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
     }
 
 

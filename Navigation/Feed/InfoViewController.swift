@@ -10,7 +10,6 @@ class InfoViewController: UIViewController {
         button.setTitle("Alert", for: .normal)
         button.addTarget(self, action: #selector(donePressed), for: .touchUpInside)
         
-        
         return button
     }()
 

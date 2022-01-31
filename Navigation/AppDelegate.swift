@@ -10,23 +10,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow()
         
-        let logIn = LogInViewController()
-
-        let feed = FeedViewController()
+        let tabBarController = UITabBarController()
+        
+        let logInVC = LogInViewController()
+        logInVC.tabBarItem = UITabBarItem(title: "Profile", image: .init(systemName: "person.fill"), tag: 0)
+        
+        let feedVC = FeedViewController()
+        feedVC.tabBarItem = UITabBarItem(title: "Feed", image: .init(systemName: "house.fill"), tag: 1)
         
         let navigationAppearance = UINavigationBarAppearance()
         navigationAppearance.backgroundColor = .systemGray6
         
-        let profileNavigationController = UINavigationController(rootViewController: logIn)
+        let profileNavigationController = UINavigationController(rootViewController: logInVC)
         profileNavigationController.navigationBar.scrollEdgeAppearance = navigationAppearance
         
         
         let feedNavigationController =
-            UINavigationController(rootViewController: feed)
+            UINavigationController(rootViewController: feedVC)
         feedNavigationController.navigationBar.scrollEdgeAppearance = navigationAppearance
     
-        
-        let tabBarController = UITabBarController()
         tabBarController.tabBar.backgroundColor = .systemGray6
         tabBarController.tabBar.unselectedItemTintColor = .systemGray
         tabBarController.tabBar.tintColor = .systemBlue
@@ -36,8 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
-        
-        
         
         return true
     }

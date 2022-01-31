@@ -6,7 +6,7 @@ class ProfileHeaderView: UIView {
     
     var avatarContentView: UIView = {
         let avatarContentView = UIView()
-        avatarContentView.translatesAutoresizingMaskIntoConstraints = false
+        avatarContentView.toAutoLayout()
         return avatarContentView
     }()
     
@@ -18,7 +18,7 @@ class ProfileHeaderView: UIView {
         avatarImageView.layer.borderColor = UIColor.white.cgColor
         avatarImageView.layer.contentsGravity = .resizeAspectFill
         avatarImageView.layer.masksToBounds = true
-        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
+        avatarImageView.toAutoLayout()
         return avatarImageView
     }()
     
@@ -28,7 +28,7 @@ class ProfileHeaderView: UIView {
         fullNameLabel.text = "Hipster cat"
         fullNameLabel.font = UIFont.boldSystemFont(ofSize: 18)
         fullNameLabel.textColor = .black
-        fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        fullNameLabel.toAutoLayout()
         return fullNameLabel
     }()
     
@@ -45,7 +45,7 @@ class ProfileHeaderView: UIView {
         setStatusButton.addTarget(self,
                                action: #selector(buttonPressed),
                                for: .touchUpInside)
-        setStatusButton.translatesAutoresizingMaskIntoConstraints = false
+        setStatusButton.toAutoLayout()
         return setStatusButton
     }()
 
@@ -60,7 +60,7 @@ class ProfileHeaderView: UIView {
         statusTextField.addTarget(self,
                             action: #selector(statusTextChanged),
                             for: .editingChanged)
-        statusTextField.translatesAutoresizingMaskIntoConstraints = false
+        statusTextField.toAutoLayout()
         return statusTextField
     }()
     
@@ -69,7 +69,7 @@ class ProfileHeaderView: UIView {
         statusLabel.text = "Waiting for something"
         statusLabel.font = UIFont.systemFont(ofSize: 14)
         statusLabel.textColor = .gray
-        statusLabel.translatesAutoresizingMaskIntoConstraints = false
+        statusLabel.toAutoLayout()
         return statusLabel
     }()
     
@@ -84,12 +84,9 @@ class ProfileHeaderView: UIView {
     }
     
     private func setupUI() {
-        addSubview(avatarContentView)
+        addSubviews(avatarContentView, fullNameLabel, setStatusButton, statusLabel, statusTextField)
         avatarContentView.addSubview(avatarImageView)
-        addSubview(fullNameLabel)
-        addSubview(setStatusButton)
-        addSubview(statusLabel)
-        addSubview(statusTextField)
+
         
         NSLayoutConstraint.activate([
             avatarContentView.leadingAnchor.constraint(
