@@ -44,14 +44,8 @@ class FeedViewController: UIViewController {
         return stackView
     }()
     
-    
     fileprivate func setupUI() {
         view.backgroundColor = .white
-        
-        stackView.addArrangedSubview(firstButton)
-        stackView.addArrangedSubview(secondButton)
-        
-        view.addSubview(stackView)
         
         NSLayoutConstraint.activate([
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -71,9 +65,7 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
     }
-
-
-    
+  
     @objc func buttonAction(sender: UIButton) {
         let vc = PostViewController()
         vc.firstPost = self.post.title

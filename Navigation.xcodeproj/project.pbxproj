@@ -19,6 +19,7 @@
 		5A9FCD94278C1881001D2F82 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9FCD93278C1881001D2F82 /* PostViewController.swift */; };
 		5A9FCD96278C18B2001D2F82 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9FCD95278C18B2001D2F82 /* InfoViewController.swift */; };
 		5AFB1D2027A7B50A00068D0B /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFB1D1F27A7B50A00068D0B /* Extentions.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		5A9FCD93278C1881001D2F82 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		5A9FCD95278C18B2001D2F82 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		5AFB1D1F27A7B50A00068D0B /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				5A140E2E2754C0EE002327CE /* AppDelegate.swift in Sources */,
 				5AFB1D2027A7B50A00068D0B /* Extentions.swift in Sources */,
 				5A0E5194278EADCB006E603B /* LogInViewController.swift in Sources */,
+
 				5A9FCD94278C1881001D2F82 /* PostViewController.swift in Sources */,
 				5A03028A2768A48500FA2D66 /* ProfileViewController.swift in Sources */,
 				5A03028C2768FBC600FA2D66 /* FeedViewController.swift in Sources */,
