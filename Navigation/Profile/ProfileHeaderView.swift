@@ -2,7 +2,7 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
-    private var statusText: String = ""
+    private lazy var statusText: String = ""
     
     var avatarContentView: UIView = {
         let avatarContentView = UIView()
@@ -11,19 +11,23 @@ class ProfileHeaderView: UIView {
     }()
     
     
-    var avatarImageView: UIImageView = {
-        let avatarImageView = UIImageView(image: UIImage(named: "cat"))
+    private lazy var avatarImageView: UIImageView = {
+        let avatarImageView = UIImageView()
+        avatarImageView.frame = CGRect(x: 0, y: 0,
+                                      width: 140, height: 140)
         avatarImageView.layer.cornerRadius = 70
         avatarImageView.layer.borderWidth = 3
         avatarImageView.layer.borderColor = UIColor.white.cgColor
+        avatarImageView.layer.contents = UIImage(named: "cat")?.cgImage
+
         avatarImageView.layer.contentsGravity = .resizeAspectFill
         avatarImageView.layer.masksToBounds = true
         avatarImageView.toAutoLayout()
         return avatarImageView
     }()
     
-    
-    var fullNameLabel: UILabel = {
+ 
+    private lazy var fullNameLabel: UILabel = {
         let fullNameLabel = UILabel()
         fullNameLabel.text = "Hipster cat"
         fullNameLabel.font = UIFont.boldSystemFont(ofSize: 18)
@@ -32,7 +36,7 @@ class ProfileHeaderView: UIView {
         return fullNameLabel
     }()
     
-    var setStatusButton: UIButton = {
+    private lazy var setStatusButton: UIButton = {
         let setStatusButton = UIButton()
         setStatusButton.setTitle("Show status", for: .normal)
         setStatusButton.setTitleColor(.white, for: .normal)
@@ -49,11 +53,18 @@ class ProfileHeaderView: UIView {
         return setStatusButton
     }()
 
-    var statusTextField: UITextField = {
+    private lazy var statusTextField: UITextField = {
         let statusTextField = UITextField()
         statusTextField.backgroundColor = .white
         statusTextField.font = UIFont.systemFont(ofSize: 15)
+        statusTextField.placeholder = "Set your status"
+       
+        statusTextField.keyboardType = UIKeyboardType.default
+        statusTextField.returnKeyType = UIReturnKeyType.done
+        statusTextField.clearButtonMode = UITextField.ViewMode.whileEditing
+        statusTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         statusTextField.textColor = .black
+        
         statusTextField.layer.cornerRadius = 12
         statusTextField.layer.borderWidth = 1
         statusTextField.layer.borderColor = UIColor.black.cgColor
@@ -63,8 +74,9 @@ class ProfileHeaderView: UIView {
         statusTextField.toAutoLayout()
         return statusTextField
     }()
+
     
-    var statusLabel: UILabel = {
+    private lazy var statusLabel: UILabel = {
         let statusLabel = UILabel()
         statusLabel.text = "Waiting for something"
         statusLabel.font = UIFont.systemFont(ofSize: 14)
@@ -83,10 +95,10 @@ class ProfileHeaderView: UIView {
         print(statusLabel.text ?? "Unknown text")
     }
     
-    private func setupUI() {
-        addSubviews(avatarContentView, fullNameLabel, setStatusButton, statusLabel, statusTextField)
+    fileprivate func setupUI() {
+        
+        addSubviews(avatarContentView, fullNameLabel, setStatusButton, statusLabel, statusTextField )
         avatarContentView.addSubview(avatarImageView)
-
         
         NSLayoutConstraint.activate([
             avatarContentView.leadingAnchor.constraint(
@@ -97,11 +109,6 @@ class ProfileHeaderView: UIView {
                 equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
             avatarContentView.heightAnchor.constraint(
                 equalToConstant: 140),
-            
-            avatarImageView.leadingAnchor.constraint(equalTo: avatarContentView.leadingAnchor),
-            avatarImageView.topAnchor.constraint(equalTo: avatarContentView.topAnchor),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 140.0),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 140.0),
             
             setStatusButton.leadingAnchor.constraint(
                 equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
@@ -141,5 +148,6 @@ class ProfileHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
+        
     }
 }

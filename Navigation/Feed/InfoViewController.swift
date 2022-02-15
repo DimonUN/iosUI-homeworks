@@ -9,6 +9,8 @@ class InfoViewController: UIViewController {
         button.backgroundColor = UIColor.systemBlue
         button.setTitle("Alert", for: .normal)
         button.addTarget(self, action: #selector(donePressed), for: .touchUpInside)
+        
+        
         return button
     }()
 

@@ -2,6 +2,7 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
+
     //MARK: Setting properties
     
     private lazy var scrollView: UIScrollView = {
@@ -131,12 +132,13 @@ class LogInViewController: UIViewController {
     
     fileprivate func setupUI() {
         view.backgroundColor = .white
-        
         navigationController?.navigationBar.isHidden = true
+        
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        contentView.addSubviews(logoContentView, textFieldsContentView, loginButton)
+        contentView.addSubview(logoContentView)
         logoContentView.addSubview(logoImageView)
+        contentView.addSubviews(textFieldsContentView, loginButton)
         textFieldsContentView.addSubviews(loginTextField, passwordTextField)
         loginButton.addSubview(imageView)
         
@@ -231,8 +233,12 @@ class LogInViewController: UIViewController {
         imageView.alpha = 0.8
         loginTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
+        
         let profileVC = ProfileViewController()
+        
+        navigationController?.navigationBar.isHidden = false
         self.navigationController?.pushViewController(profileVC, animated: true)
+        
     }
 }
 
