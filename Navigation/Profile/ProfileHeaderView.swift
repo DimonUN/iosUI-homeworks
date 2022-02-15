@@ -6,22 +6,19 @@ class ProfileHeaderView: UIView {
     
     var avatarContentView: UIView = {
         let avatarContentView = UIView()
-        avatarContentView.translatesAutoresizingMaskIntoConstraints = false
+        avatarContentView.toAutoLayout()
         return avatarContentView
     }()
     
     
     var avatarImageView: UIImageView = {
-        let avatarImageView = UIImageView()
-        avatarImageView.frame = CGRect(x: 0, y: 0,
-                                      width: 140, height: 140)
+        let avatarImageView = UIImageView(image: UIImage(named: "cat"))
         avatarImageView.layer.cornerRadius = 70
         avatarImageView.layer.borderWidth = 3
         avatarImageView.layer.borderColor = UIColor.white.cgColor
-        avatarImageView.layer.contents = UIImage(named: "cat")?.cgImage
         avatarImageView.layer.contentsGravity = .resizeAspectFill
         avatarImageView.layer.masksToBounds = true
-        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
+        avatarImageView.toAutoLayout()
         return avatarImageView
     }()
     
@@ -31,7 +28,7 @@ class ProfileHeaderView: UIView {
         fullNameLabel.text = "Hipster cat"
         fullNameLabel.font = UIFont.boldSystemFont(ofSize: 18)
         fullNameLabel.textColor = .black
-        fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        fullNameLabel.toAutoLayout()
         return fullNameLabel
     }()
     
@@ -48,7 +45,7 @@ class ProfileHeaderView: UIView {
         setStatusButton.addTarget(self,
                                action: #selector(buttonPressed),
                                for: .touchUpInside)
-        setStatusButton.translatesAutoresizingMaskIntoConstraints = false
+        setStatusButton.toAutoLayout()
         return setStatusButton
     }()
 
@@ -63,7 +60,7 @@ class ProfileHeaderView: UIView {
         statusTextField.addTarget(self,
                             action: #selector(statusTextChanged),
                             for: .editingChanged)
-        statusTextField.translatesAutoresizingMaskIntoConstraints = false
+        statusTextField.toAutoLayout()
         return statusTextField
     }()
     
@@ -72,7 +69,7 @@ class ProfileHeaderView: UIView {
         statusLabel.text = "Waiting for something"
         statusLabel.font = UIFont.systemFont(ofSize: 14)
         statusLabel.textColor = .gray
-        statusLabel.translatesAutoresizingMaskIntoConstraints = false
+        statusLabel.toAutoLayout()
         return statusLabel
     }()
     
@@ -87,12 +84,9 @@ class ProfileHeaderView: UIView {
     }
     
     private func setupUI() {
-        addSubview(avatarContentView)
+        addSubviews(avatarContentView, fullNameLabel, setStatusButton, statusLabel, statusTextField)
         avatarContentView.addSubview(avatarImageView)
-        addSubview(fullNameLabel)
-        addSubview(setStatusButton)
-        addSubview(statusLabel)
-        addSubview(statusTextField)
+
         
         NSLayoutConstraint.activate([
             avatarContentView.leadingAnchor.constraint(
@@ -103,6 +97,11 @@ class ProfileHeaderView: UIView {
                 equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
             avatarContentView.heightAnchor.constraint(
                 equalToConstant: 140),
+            
+            avatarImageView.leadingAnchor.constraint(equalTo: avatarContentView.leadingAnchor),
+            avatarImageView.topAnchor.constraint(equalTo: avatarContentView.topAnchor),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 140.0),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 140.0),
             
             setStatusButton.leadingAnchor.constraint(
                 equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
@@ -142,6 +141,5 @@ class ProfileHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
-        
     }
 }
