@@ -22,10 +22,10 @@ class PostTableViewCell: UITableViewCell {
     
     private lazy var textPostLabel: UILabel = {
         let textPostLabel = UILabel()
+        textPostLabel.toAutoLayout()
         textPostLabel.font = .systemFont(ofSize: 14.0)
         textPostLabel.textColor = .systemGray
         textPostLabel.numberOfLines = 0
-        textPostLabel.toAutoLayout()
         return textPostLabel
     }()
     
