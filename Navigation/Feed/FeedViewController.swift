@@ -1,8 +1,11 @@
 import UIKit
 
 class FeedViewController: UIViewController {
-
-    var post = Post(title: "Первый пост")
+    
+    var post1: Post = {
+        let post1 = Post(title: "", author: "Ignat", description: "About the dangers of malnutrition.", image: "post1", likes: 15, views: 581)
+        return post1
+    }()
     
     var firstButton: UIButton = {
         let firstButton = UIButton()
@@ -47,8 +50,8 @@ class FeedViewController: UIViewController {
     
     fileprivate func setupUI() {
         view.backgroundColor = .white
-        stackView.addArrangedSubview(firstButton)
-        stackView.addArrangedSubview(secondButton)
+        
+        stackView.addSubviews(firstButton, secondButton)
         view.addSubview(stackView)
         
         NSLayoutConstraint.activate([
@@ -72,7 +75,7 @@ class FeedViewController: UIViewController {
 
     @objc func buttonAction(sender: UIButton) {
         let vc = PostViewController()
-        vc.firstPost = self.post.title
+        vc.firstPost = self.post1.title
         self.navigationController?.pushViewController(vc, animated: true)
      }
         
