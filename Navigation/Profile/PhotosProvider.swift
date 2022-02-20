@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 struct PhotosProvider {
     static func get() -> [String] {
