@@ -7,6 +7,7 @@ class FeedViewController: UIViewController {
         return post1
     }()
     
+    
     var firstButton: UIButton = {
         let firstButton = UIButton()
         firstButton.backgroundColor = .systemBlue
@@ -51,6 +52,8 @@ class FeedViewController: UIViewController {
     fileprivate func setupUI() {
         view.backgroundColor = .white
         
+        self.title = "Your feed"
+        
         stackView.addSubviews(firstButton, secondButton)
         view.addSubview(stackView)
         
@@ -73,6 +76,8 @@ class FeedViewController: UIViewController {
         setupUI()
     }
 
+
+    
     @objc func buttonAction(sender: UIButton) {
         let vc = PostViewController()
         vc.firstPost = self.post1.title
@@ -80,3 +85,4 @@ class FeedViewController: UIViewController {
      }
         
 }
+

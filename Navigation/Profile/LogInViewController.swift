@@ -130,15 +130,15 @@ class LogInViewController: UIViewController {
         setupUI()
     }
     
+    
     fileprivate func setupUI() {
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
         
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        contentView.addSubview(logoContentView)
         logoContentView.addSubview(logoImageView)
-        contentView.addSubviews(textFieldsContentView, loginButton)
+        contentView.addSubviews(logoContentView, textFieldsContentView, loginButton)
         textFieldsContentView.addSubviews(loginTextField, passwordTextField)
         loginButton.addSubview(imageView)
         
@@ -193,6 +193,7 @@ class LogInViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
         
         let notificationCenter = NotificationCenter.default
         
@@ -235,8 +236,6 @@ class LogInViewController: UIViewController {
         passwordTextField.resignFirstResponder()
         
         let profileVC = ProfileViewController()
-        
-        navigationController?.navigationBar.isHidden = false
         self.navigationController?.pushViewController(profileVC, animated: true)
         
     }

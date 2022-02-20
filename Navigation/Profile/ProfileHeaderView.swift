@@ -74,7 +74,9 @@ class ProfileHeaderView: UIView {
         statusTextField.toAutoLayout()
         return statusTextField
     }()
+    
 
+    
     
     private lazy var statusLabel: UILabel = {
         let statusLabel = UILabel()
