@@ -30,18 +30,19 @@ class PhotosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupCollectionView()
+    }
+    
+    fileprivate func setupCollectionView() {
+        self.title = "Photo Gallery"
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+        collectionView.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: CollectionReuseIdentifiers.photos.rawValue)
     }
     
     fileprivate func setupUI() {
         self.view.backgroundColor = .white
-        self.title = "Photo Gallery"
-        
         self.view.addSubview(collectionView)
-        
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
-        
-        collectionView.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: CollectionReuseIdentifiers.photos.rawValue)
         
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
