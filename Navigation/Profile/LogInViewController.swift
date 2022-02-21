@@ -2,6 +2,10 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
+    @objc func tapGesture(_ gesture: UITapGestureRecognizer) {
+        print("Did catch action")
+    }
+    
 
     //MARK: Setting properties
     
@@ -132,6 +136,12 @@ class LogInViewController: UIViewController {
     
     
     fileprivate func setupUI() {
+        let recognizer = UITapGestureRecognizer()
+        recognizer.addTarget(self, action: #selector(tapGesture))
+        
+        logoContentView.addGestureRecognizer(recognizer)
+        
+        view.backgroundColor = .red
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
         
