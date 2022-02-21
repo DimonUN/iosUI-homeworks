@@ -75,14 +75,16 @@ class ProfileViewController: UIViewController {
     var avatarImageViewCenterXAnchor: NSLayoutConstraint?
     var avatarImageViewCenterYAnchor: NSLayoutConstraint?
     
-    
     @objc func tapGesture(_ gesture: UITapGestureRecognizer) {
         avatarImageViewNewWidthAnchor = header.avatarImageView.widthAnchor.constraint(equalTo: self.view.widthAnchor)
         avatarImageViewNewHeightAnchor = header.avatarImageView.heightAnchor.constraint(equalTo: self.view.widthAnchor)
         avatarImageViewCenterXAnchor = header.avatarImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         avatarImageViewCenterYAnchor = header.avatarImageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
-            
-            UIView.animateKeyframes(
+        
+        self.tableView.isScrollEnabled = false
+        self.tableView.isUserInteractionEnabled = false
+        
+        UIView.animateKeyframes(
                 withDuration: 0.8,
                 delay: 0,
                 options: .beginFromCurrentState,
@@ -117,6 +119,9 @@ class ProfileViewController: UIViewController {
     
     
     @objc func closeAvatarImage() {
+        self.tableView.isUserInteractionEnabled = true
+        self.tableView.isScrollEnabled = true
+        
         UIView.animateKeyframes(
             withDuration: 0.8,
             delay: 0,
@@ -154,7 +159,7 @@ class ProfileViewController: UIViewController {
     
     
     fileprivate func setupLayout() {
-        self.header.avatarContentView.addSubview(self.closeLabel)
+        self.view.addSubview(self.closeLabel)
         
         avatarContentViewLeadingAnchor = self.header.avatarContentView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor)
         avatarContentViewTrailingAnchor = self.header.avatarContentView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor)
@@ -166,8 +171,8 @@ class ProfileViewController: UIViewController {
         avatarContentViewTopAnchor?.isActive = true
         avatarContentViewBottomAnchor?.isActive = true
         
-        let closeLabelTrailingAnchor = self.closeLabel.trailingAnchor.constraint(equalTo:  self.header.avatarContentView.trailingAnchor, constant: -10.0)
-        let closeLabelTopAnchor = self.closeLabel.topAnchor.constraint(equalTo:  self.header.avatarContentView.topAnchor, constant: 10.0)
+        let closeLabelTrailingAnchor = self.closeLabel.trailingAnchor.constraint(equalTo:  self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10.0)
+        let closeLabelTopAnchor = self.closeLabel.topAnchor.constraint(equalTo:  self.view.safeAreaLayoutGuide.topAnchor, constant: 10.0)
         
         closeLabelTrailingAnchor.isActive = true
         closeLabelTopAnchor.isActive = true
